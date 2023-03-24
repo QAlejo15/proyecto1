@@ -26,7 +26,13 @@ class RegistroController extends Controller
             'name'=>'required|min:4',
             'username'=>'required|unique:users|min:3|max:15',
             'email' => 'required|unique:users|email|max:50',
-            'password' => 'required|min:6|max:50'
+            'password' => 'required|min:6|max:50',
+            'carrera'=>'required|min:4',
+            'semestre'=>'required|min:4',
+            'celular'=>'required|min:10',
+            'direccion'=>'required|min:4',
+            'presentacion'=>'required|min:4',
+            'genero'=>'required|min:4',
 
         ]);
 
@@ -42,6 +48,15 @@ class RegistroController extends Controller
             'username'=>Str::slug($request->username),
             'email'=> $request->email,
             'password'=> Hash::make($request->password),
+            'carrera'=> $request->carrera,
+            'semestre'=> $request->semestre,
+            'celular'=> $request->celular,
+            'direccion'=> $request->direccion,
+            'presentacion'=> $request->presentacion,
+            'genero'=> $request->genero,
+            
+            
+
        ]);
 
        auth()->attempt([

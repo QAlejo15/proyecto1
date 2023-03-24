@@ -6,6 +6,7 @@ use App\Http\Controllers\SesionController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SecueurlController;
 use App\Http\Controllers\LogoutController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,7 @@ Route::get('/sesion',[SesionController::class,'index'])->name('sesion');
 Route::post('/sesion',[SesionController::class,'store'])->name('sesion');
 Route::get('/registro',[RegistroController::class,'index'])->name('registro');
 Route::post('/registro',[RegistroController::class,"store"])->name('registro');
-Route::get('/vistausuario',[SecueurlController::class,'index'])->name('dash');
+Route::get('/{user:username}',[SecueurlController::class,'index'])->name('dash');
 Route::post('/logout',[LogoutController::class,"store"])->name('logout');
 
 

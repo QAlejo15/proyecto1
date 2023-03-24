@@ -1,6 +1,7 @@
 @extends('layoutprincipal');
 
-<section class="h-screen">
+
+<section  class="h-screen">
       
   <div class="flex xl:justify-center lg:justify-between justify-self-auto items-center flex-wrap h-full g-6"
  >
@@ -72,6 +73,101 @@
              
          @enderror
        </div>
+
+       <!-- Carrera  input -->
+       <div class="mb-6">
+        <label for="carrera" class="mb-2 block uppercase text-gray-900 font-bold">
+         Programa Academico
+        </label>
+        <input
+          type="text"
+          name="carrera"
+          class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+          id="exampleFormControlInput2"
+          placeholder="Programa Academico"
+        />
+        @error('carrera')
+        <p class = "bg-red-600 text-white my-2 text-sm p-2 text-center">{{$message}}
+        @enderror
+
+        <!-- semestre -->
+       <div class="mb-6">
+        <label for="semestre" class="mb-2 block uppercase text-gray-900 font-bold">
+         Semestre
+        </label>
+        <input
+          type="text"
+          name="semestre"
+          class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+          id="exampleFormControlInput2"
+          placeholder="Semestre"
+        />
+        @error('semestre')
+        <p class = "bg-red-600 text-white my-2 text-sm p-2 text-center">{{$message}}    
+        @enderror
+
+
+       <!-- Celular input -->
+       <div class="mb-6">
+        <label for="celular" class="mb-2 block uppercase text-gray-900 font-bold">
+         Celular
+        </label>
+        <input
+          type="text"
+          name="celular"
+          class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+          id="exampleFormControlInput2"
+          placeholder="Celular"
+        />
+        @error('celular')
+        <p class = "bg-red-600 text-white my-2 text-sm p-2 text-center">{{$message}}
+        @enderror
+
+        <!-- direccion  input -->
+       <div class="mb-6">
+        <label for="direccion" class="mb-2 block uppercase text-gray-900 font-bold">
+         Direccion
+        </label>
+        <input
+          type="text"
+          name="direccion"
+          class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+          id="exampleFormControlInput2"
+          placeholder="Direccion"
+        />
+        @error('direccion')
+        <p class = "bg-red-600 text-white my-2 text-sm p-2 text-center">{{$message}}  
+        @enderror
+        <!-- presentacion  input -->
+       <div class="mb-6">
+        <label for="presentacion" class="mb-2 block uppercase text-gray-900 font-bold">
+         Presentacion
+        </label>
+        <input
+          type="text"
+          name="presentacion"
+          class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+          id="exampleFormControlInput2"
+          placeholder="Presentacion"
+        />
+        @error('presentacion')
+        <p class = "bg-red-600 text-white my-2 text-sm p-2 text-center">{{$message}}  
+        @enderror
+        <!-- Genero input -->
+       <div class="mb-6">
+        <label for="genero" class="mb-2 block uppercase text-gray-900 font-bold">
+         Genero
+        </label>
+        <input
+          type="text"
+          name="genero"
+          class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+          id="exampleFormControlInput2"
+          placeholder="Masculino - Femenino - Otro"
+        />
+        @error('genero')
+        <p class = "bg-red-600 text-white my-2 text-sm p-2 text-center">{{$message}}
+        @enderror
        <!-- Contraseña  input -->
        <div class="mb-6">
          <label for="password" class="mb-2 block uppercase text-gray-900 font-bold">

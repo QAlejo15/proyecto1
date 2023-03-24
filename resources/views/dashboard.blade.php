@@ -1,65 +1,106 @@
 @extends('layoutprincipal')
 
 <!-- component -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 
-<section style="font-family: Montserrat" class=" bg-[#071e34] flex font-medium items-center justify-center h-screen">
- 
-
-
- <section class="w-64 mx-auto bg-[#20354b] rounded-2xl px-8 py-6 shadow-lg">
-        <div class="flex items-center justify-between">
-           
-            <span class="text-emerald-400">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-              </svg>
-            </span>
+<section class="pt-16 bg-blueGray-50">
+<div class="w-full lg:w-4/12 px-4 mx-auto">
+  <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-16">
+    <div class="px-6">
+      <div class="flex flex-wrap justify-center">
+        <div class="w-full px-4 flex justify-center">
+          <div class="relative">
+            <img alt="..." src="https://static.vecteezy.com/ti/vetor-gratis/p1/9734564-default-avatar-profile-icon-of-social-media-user-vetor.jpg" class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px">
+          </div>
         </div>
-        
-        <div class="mt-6 w-fit mx-auto">
-            <img src="https://static.vecteezy.com/ti/vetor-gratis/p1/9734564-default-avatar-profile-icon-of-social-media-user-vetor.jpg" class="rounded-full w-28 " alt="profile picture" srcset="">
+        <div class="w-full px-4 text-center mt-20">
+          <div class="flex justify-center py-4 lg:pt-4 pt-8">
+            <div class="mr-4 p-3 text-center">
+              <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
+                22
+              </span>
+              <span class="text-sm text-blueGray-400">Friends</span>
+            </div>
+            <div class="mr-4 p-3 text-center">
+              <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
+                10
+              </span>
+              <span class="text-sm text-blueGray-400">Photos</span>
+            </div>
+            <div class="lg:mr-4 p-3 text-center">
+              <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
+                89
+              </span>
+              <span class="text-sm text-blueGray-400">Comments</span>
+            </div>
+          </div>
         </div>
-
-       
-        @auth
-        <div class="mt-8 ">
-            <p class="text-white font-bold text-2xl tracking-wide">{{auth()->user()->username}}</p>
-        </div>
-        @endauth
-
-
-
-
-        @auth
-        <div class="mt-8">
-        <button id="toggleSidebarMobileSearch" type="button"
-        class="FJRldeiG2gFGZfuKgp88 PeR2JZ9BZHYIH8Ea3F36 mveJTCIb2WII7J4sY22F F34pkf_DAj2DlPtfAEMV ZnBoTVi7VOJdCLSSU62n _7KA5gD55t2lxf9Jkj20 XIIs8ZOri3wm8Wnj9N_y OPrb_iG5WDy_7F05BDOX dMTOiA3mf3FTjlHu6DqW">
-        <span class="_DVAfiyo21kM68EUVzEQ"></span>
-        </button> 
-        
-        <form action="{{route('logout')}}" method="POST">
-            @csrf
-            <li> <input class="text-white font-bold text-1xl tracking-wide" type="submit" value="Cerrar sesion"></li>
-        </form>
-        @endauth
-
-
-        <p class="text-emerald-400 font-semibold mt-2.5" >
-            
+      </div>
+      @auth
+          
+      
+      <div class="text-center mt-12">
+        <p class="text-xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
+            {{auth()->user()->username}}
         </p>
+    @endauth
 
-        
-        <div class="mt-3 text-white text-sm">
-
-            <p class="text-white font-bold text-2xl tracking-wide"></p>
-
+        <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
+          <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
+        Direccion: {{auth()->user()->direccion}}
         </div>
-
-        
-    </section>
-
- </form>
+        <div class="mb-2 text-blueGray-600">
+            <i class="fas fa-genderless mr-2 text-lg text-blueGray-400"></i>
+        Genero: {{auth()->user()->genero}}
+          </div>
+        <div class="mb-2 text-blueGray-600">
+          <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
+        Programa academico: {{auth()->user()->carrera}}
+          </div>
+        <div class="mb-2 text-blueGray-600">
+            <i class="fas fa-phone fa-rotate-90 mr-2 text-lg text-blueGray-400"></i>
+        Celular: {{auth()->user()->celular}}
+          </div>
+        <div class="mb-2 text-blueGray-600">
+          <i class="fas fa-university mr-2 text-lg text-blueGray-400"></i>
+        Semestre: {{auth()->user()->semestre}}
+        </div>
+      </div>
+      <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
+        <div class="flex flex-wrap justify-center">
+          <div class="w-full lg:w-9/12 px-4">
+            <p class="mb-4 text-lg leading-relaxed text-blueGray-700">
+                {{auth()->user()->presentacion}}
+            </p>
+            <a href="javascript:void(0);" class="font-normal text-pink-500">
+              
+            </a>
+           
+    
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="w-full px-4 text-center mt-20">
+@auth
+<form action="{{route('logout')}}" method="POST">
+    @csrf
+     <input class="inline-block rounded bg-danger px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-black shadow-[0_4px_9px_-4px_#dc4c64] transition duration-150 ease-in-out hover:bg-danger-600 hover:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:bg-danger-600 focus:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:outline-none focus:ring-0 active:bg-danger-700 active:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)]" type="submit" value="Cerrar sesion">
+</form>
+@endauth
+</div>
+<footer class="relative  pt-8 pb-6 mt-8">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-wrap items-center md:justify-between justify-center">
+      <div class="w-full md:w-6/12 px-4 mx-auto text-center">
+        <div class="text-sm text-blueGray-500 font-semibold py-1">
+          Made with <a href="https://www.creative-tim.com/product/notus-js" class="text-blueGray-500 hover:text-gray-800" target="_blank">Notus JS</a> by <a href="https://www.creative-tim.com" class="text-blueGray-500 hover:text-blueGray-800" target="_blank"> Creative Tim</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 </section>
