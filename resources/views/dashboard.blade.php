@@ -76,6 +76,11 @@
             <a href="javascript:void(0);" class="font-normal text-pink-500">
               
             </a>
+
+           
+             
+          
+            
            
     
           </div>
@@ -84,11 +89,29 @@
     </div>
   </div>
 </div>
+<div class="bg-gray-100 p-4 rounded-lg">
+<h1 class="text-2xl text-center text-gray-400 font-bold">PUBLICACIONES</h1>
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-4">
+                <!-- Recorre los posts con un foreach -->
+                @foreach($posts as $post)
+                  <div class="bg-gray-100 p-4 rounded-lg">
+                    <!-- Muestra la imagen usando la ruta generada con la función asset() -->
+                    <img src="{{ asset('uploads/' . $post->imagen) }}" alt="Imagen del post" class="w-full  object-cover rounded-lg">
+                    <!-- Muestra el título y la descripción del post -->
+                    <h2 class="text-xl font-bold mt-2">{{ $post->titulo }}</h2>
+                    <p class="mt-1">{{ $post->descripcion }}</p>
+                  </div>
+                @endforeach
+              </div>
+</div>
 <div class="w-full px-4 text-center mt-20">
 @auth
 <form action="{{route('logout')}}" method="POST">
     @csrf
      <input class="inline-block rounded bg-danger px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-black shadow-[0_4px_9px_-4px_#dc4c64] transition duration-150 ease-in-out hover:bg-danger-600 hover:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:bg-danger-600 focus:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:outline-none focus:ring-0 active:bg-danger-700 active:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)]" type="submit" value="Cerrar sesion">
+    <a href="{{route('publicaciones.create')}}" class="mb-4 text-lg leading-relaxed text-blueGray-700" >
+      Crear publicacion
+    </a> 
 </form>
 @endauth
 </div>

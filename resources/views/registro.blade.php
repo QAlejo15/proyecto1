@@ -1,4 +1,4 @@
-@extends('layoutprincipal');
+@extends('layoutprincipal')
 
 
 <section  class="h-screen">

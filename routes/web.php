@@ -6,6 +6,8 @@ use App\Http\Controllers\SesionController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SecueurlController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\imgController;
+
 use App\Models\User;
 
 /*
@@ -32,6 +34,9 @@ Route::post('/sesion',[SesionController::class,'store'])->name('sesion');
 Route::get('/registro',[RegistroController::class,'index'])->name('registro');
 Route::post('/registro',[RegistroController::class,"store"])->name('registro');
 Route::get('/{user:username}',[SecueurlController::class,'index'])->name('dash');
+Route::get('/posts/create',[SecueurlController::class,'create'])->name('publicaciones.create');
+Route::post('/imgs',[imgController::class,"store"])->name('img.store');
+Route::post('/posts',[SecueurlController::class, "store"])->name('publicaciones.store');
 Route::post('/logout',[LogoutController::class,"store"])->name('logout');
 
 
