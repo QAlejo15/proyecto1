@@ -93,16 +93,26 @@
 <h1 class="text-2xl text-center text-gray-400 font-bold">PUBLICACIONES</h1>
               <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-4">
                 <!-- Recorre los posts con un foreach -->
+                
                 @foreach($posts as $post)
                   <div class="bg-gray-100 p-4 rounded-lg">
-                    <!-- Muestra la imagen usando la ruta generada con la función asset() -->
+                   
+                    <a href="{{route('publicaciones.show', ['post' => $post, 'user'=>auth()->user()->username])}}">
                     <img src="{{ asset('uploads/' . $post->imagen) }}" alt="Imagen del post" class="w-full  object-cover rounded-lg">
-                    <!-- Muestra el título y la descripción del post -->
+                   
+                   
                     <h2 class="text-xl font-bold mt-2">{{ $post->titulo }}</h2>
                     <p class="mt-1">{{ $post->descripcion }}</p>
+                    </a>
                   </div>
                 @endforeach
+              
               </div>
+
+<div>
+
+{{$posts->links('pagination::tailwind')}} 
+</div>              
 </div>
 <div class="w-full px-4 text-center mt-20">
 @auth

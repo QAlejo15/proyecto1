@@ -4,10 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\SesionController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\SecueurlController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\imgController;
-
+use App\Models\Comentario;
+use App\Models\Post;
 use App\Models\User;
 
 /*
@@ -37,6 +39,9 @@ Route::get('/{user:username}',[SecueurlController::class,'index'])->name('dash')
 Route::get('/posts/create',[SecueurlController::class,'create'])->name('publicaciones.create');
 Route::post('/imgs',[imgController::class,"store"])->name('img.store');
 Route::post('/posts',[SecueurlController::class, "store"])->name('publicaciones.store');
+Route::get('/posts/{user:username}/{post}',[SecueurlController::class, "show"])->name('publicaciones.show');
+Route::post('/comments', [ComentarioController::class, "store"])->name('comentarios.store');
+
 Route::post('/logout',[LogoutController::class,"store"])->name('logout');
 
 
