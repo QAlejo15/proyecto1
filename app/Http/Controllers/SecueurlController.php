@@ -66,6 +66,4 @@ class SecueurlController extends Controller
 
     return redirect()->route('dash',['user' => auth()->user()->username]);
  }
-
-    
 }

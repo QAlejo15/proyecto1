@@ -29,6 +29,11 @@
         <textarea name="contenido" id="contenido" placeholder="Escribe un comentario" rows="4" cols="50"
         class="block p-2.5 w-full text-sm bg-gray-50 rounded-lg "
         ></textarea>
+        @error('contenido')
+
+        <p class = "bg-red-600 text-white my-2 text-sm p-2 text-center">{{$message}}
+            
+        @enderror
     </div>
     <br>
     <div>
@@ -48,7 +53,15 @@
 
 <ul class="w-96">
     @foreach ($post->comentario as $comment)
+      <a href="{{route('dash',['user'=>$comment->user])}}"><strong>{{$comment->user->username}} </strong></a>
       <li  class="w-full border-b-2 border-white-100 border-opacity-100 py-4 dark:border-opacity-50">{{ $comment->contenido }}</li>
+
+      <form action="{{ route('comentarios.destroy', $comment->id) }}" method="POST">
+        @csrf
+    {{method_field('DELETE')}}
+        <button type="submit">Eliminar</button>
+      </form>
+
     @endforeach
   </ul>
 </div>

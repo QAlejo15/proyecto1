@@ -42,7 +42,7 @@ class ComentarioController extends Controller
 
 
         $request->validate([
-           // 'contenido' => 'required',
+            'contenido' => 'required',
             'post_id' => 'required',
         ]);
 
@@ -98,10 +98,15 @@ class ComentarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comentario $comentario)
+    public function destroy(Comentario $comentario, $id)
     {
-       // $comentario->delete();
+        $comentario = Comentario::findOrFail($id);
+        $comentario->delete();
 
-        //return redirect()->back()->with('success', 'Comentario elimando con exito');
+        //$comentario=Comentario::where('id',$id)->first();
+       // $comentario->delete();
+        return redirect()->back();
+
+       // return redirect()->back()->with('success', 'Comentario elimando con exito');
     }
 }

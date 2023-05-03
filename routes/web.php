@@ -41,6 +41,8 @@ Route::post('/imgs',[imgController::class,"store"])->name('img.store');
 Route::post('/posts',[SecueurlController::class, "store"])->name('publicaciones.store');
 Route::get('/posts/{user:username}/{post}',[SecueurlController::class, "show"])->name('publicaciones.show');
 Route::post('/comments', [ComentarioController::class, "store"])->name('comentarios.store');
+//Route::get('/{username}',[SecueurlController::class,'perfil'])->name('perfil');
+Route::delete('/comments/{id}', [ComentarioController::class, "destroy"])->name('comentarios.destroy');
 
 Route::post('/logout',[LogoutController::class,"store"])->name('logout');
 
