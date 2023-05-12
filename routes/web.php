@@ -8,6 +8,8 @@ use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\SecueurlController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\imgController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\UserController;
 use App\Models\Comentario;
 use App\Models\Post;
 use App\Models\User;
@@ -30,7 +32,7 @@ Route::get('/', function () {
 Route::get('/layout', function () {
     return view('layoutprincipal');
 });
-
+Route::get('/feed',[UserController::class,'index'])->name('feed');
 Route::get('/sesion',[SesionController::class,'index'])->name('sesion');
 Route::post('/sesion',[SesionController::class,'store'])->name('sesion');
 Route::get('/registro',[RegistroController::class,'index'])->name('registro');
@@ -43,6 +45,8 @@ Route::get('/posts/{user:username}/{post}',[SecueurlController::class, "show"])-
 Route::post('/comments', [ComentarioController::class, "store"])->name('comentarios.store');
 //Route::get('/{username}',[SecueurlController::class,'perfil'])->name('perfil');
 Route::delete('/comments/{id}', [ComentarioController::class, "destroy"])->name('comentarios.destroy');
+Route::delete('/posts/{post}', [SecueurlController::class, "destroy"])->name('publicaciones.destroy');
+Route::post('like',[LikeController::class,'store'])->name('like.store');
 
 Route::post('/logout',[LogoutController::class,"store"])->name('logout');
 

@@ -77,6 +77,13 @@
               
             </a>
 
+            
+          
+           <a class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" href="{{route('feed')}}" class="mb-4 text-lg leading-relaxed text-blueGray-700" >
+          Feed
+         </a> 
+              
+
            
              
           
@@ -109,7 +116,7 @@
               
               </div>
 
-<div>
+<div class="paginador">
 
 {{$posts->links('pagination::tailwind')}} 
 </div>              
@@ -118,22 +125,12 @@
 @auth
 <form action="{{route('logout')}}" method="POST">
     @csrf
-     <input class="inline-block rounded bg-danger px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-black shadow-[0_4px_9px_-4px_#dc4c64] transition duration-150 ease-in-out hover:bg-danger-600 hover:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:bg-danger-600 focus:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:outline-none focus:ring-0 active:bg-danger-700 active:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)]" type="submit" value="Cerrar sesion">
-    <a href="{{route('publicaciones.create')}}" class="mb-4 text-lg leading-relaxed text-blueGray-700" >
+     <input class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" type="submit" value="Cerrar sesion">
+    <a class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" href="{{route('publicaciones.create')}}" class="mb-4 text-lg leading-relaxed text-blueGray-700" >
       Crear publicacion
     </a> 
 </form>
 @endauth
 </div>
-<footer class="relative  pt-8 pb-6 mt-8">
-  <div class="container mx-auto px-4">
-    <div class="flex flex-wrap items-center md:justify-between justify-center">
-      <div class="w-full md:w-6/12 px-4 mx-auto text-center">
-        <div class="text-sm text-blueGray-500 font-semibold py-1">
-          Made with <a href="https://www.creative-tim.com/product/notus-js" class="text-blueGray-500 hover:text-gray-800" target="_blank">Notus JS</a> by <a href="https://www.creative-tim.com" class="text-blueGray-500 hover:text-blueGray-800" target="_blank"> Creative Tim</a>.
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
+
 </section>

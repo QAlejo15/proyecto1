@@ -1,68 +1,93 @@
 @extends('layoutprincipal')
-<div class="bg-gray-100 p-4 rounded-2xl place-content-center mx-96	" >
 
 
-<div class="mb-6 flex justify-center">
-<div  class="post-seccion">
+@section('content')
+
+<div class="bg-gray-100 p-4 rounded-2xl place-content-center mx-96">
+  <div class="post-seccion">
     
-    <br>
-    <div class="mb-6 flex justify-center">
-    <img src="{{asset('uploads').'/'.$post->imagen}}" class="imagenPost rounded-2xl" width="300px" height="400px">
-    </div>
-    <br>
-    <h1><strong>{{$post->titulo}}</strong></h1>
-    <h1>Publicacion de : <strong>{{auth()->user()->username}}</strong></h1>
-    <p>15 me gusta</p>
-    <strong>Descripcion:</strong>
-    <p>{{$post->descripcion}}</p>
-    <strong>{{$post->created_at->diffForHumans()}}</strong>
-</div>
-</div>
-<br>
-<div class="mb-6 flex justify-center">
-<form method="post" action="{{ route('comentarios.store') }}">
-    @csrf
-    <input type="hidden" name="post_id" value="{{ $post->id }}">
-    
-    <div>
-        <label for="contenido">Añande un nuevo comentario</label><br><br>
-        <textarea name="contenido" id="contenido" placeholder="Escribe un comentario" rows="4" cols="50"
-        class="block p-2.5 w-full text-sm bg-gray-50 rounded-lg "
-        ></textarea>
-        @error('contenido')
+  
+      <div class="mb-6">
+          <img src="{{ asset('uploads').'/'.$post->imagen }}" class="w-full rounded-lg" alt="Imagen del post">
+      </div>
+      <div class="mb-4">
+          <div class="flex items-center">
+              <img src="https://static.vecteezy.com/ti/vetor-gratis/p1/9734564-default-avatar-profile-icon-of-social-media-user-vetor.jpg" class="w-8 h-8 rounded-full mr-2" alt="Imagen de perfil">
+              <h1 class="text-lg font-semibold">{{ $post->user->username }}</h1>
+          </div>
+      </div>
+      <div class="mb-4">
+          <h1 class="text-2xl font-semibold">{{ $post->titulo }}</h1>
+      </div>
+      <div class="flex items-center mb-4">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Facebook_Like_button.svg/1024px-Facebook_Like_button.svg.png" class="w-8 h-8 rounded-full mr-2" alt="Imagen de perfil">
+      
+          <p class="text-gray-600">{{ $likesCount}}</p>
+      </div>
+      <div class="mb-4">
+          <strong>Descripción:</strong>
+          <p>{{ $post->descripcion }}</p>
+      </div>
+      <div class="mb-4">
+          <strong>{{ $post->created_at->diffForHumans() }}</strong>
+      </div>
 
-        <p class = "bg-red-600 text-white my-2 text-sm p-2 text-center">{{$message}}
-            
-        @enderror
-    </div>
-    <br>
-    <div>
-        <button type="submit"
-        class="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-       
-        >Agregar comentario</button>
-    </div>
-</form>
-</div>
-
-<h1 class="mb-6 flex justify-center font-family: ui-sans-serif text-lg"><strong>COMENTARIOS</strong></h1>
-<div class=" mb-6 flex justify-center">
-
-<br>
-<br>
-
-<ul class="w-96">
-    @foreach ($post->comentario as $comment)
-      <a href="{{route('dash',['user'=>$comment->user])}}"><strong>{{$comment->user->username}} </strong></a>
-      <li  class="w-full border-b-2 border-white-100 border-opacity-100 py-4 dark:border-opacity-50">{{ $comment->contenido }}</li>
-
-      <form action="{{ route('comentarios.destroy', $comment->id) }}" method="POST">
-        @csrf
-    {{method_field('DELETE')}}
-        <button type="submit">Eliminar</button>
+      <form action="{{ route('like.store') }}" method="POST" class="mb-4">
+          @csrf
+          <input type="hidden" name="post_id" value="{{ $post->id }}">
+          <button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded">
+              Me gusta
+          </button>
       </form>
 
-    @endforeach
-  </ul>
+      @auth
+          @if ($post->user_id == auth()->user()->id)
+              <form method="POST" action="{{ route('publicaciones.destroy', $post) }}" class="mb-4">
+                  @csrf
+                  {{ method_field('DELETE') }}
+                  <button type="submit" class="bg-red-500 text-white font-bold py-2 px-4 rounded">
+                      Eliminar post
+                  </button>
+              </form>
+          @endif
+      @endauth
+      <div class="mb-6">
+        <form method="post" action="{{ route('comentarios.store') }}">
+            @csrf
+            <input type="hidden" name="post_id" value="{{ $post->id }}">
+            <div class="mb-4">
+                <textarea name="contenido" id="contenido" placeholder="Añade un comentario..." rows="3" class="w-full px-4 py-2 rounded-lg bg-gray-200"></textarea>
+            </div>
+            <div>
+                <button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded">
+                    Comentar
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div>
+        <h1 class="mb-2 text-lg font-semibold">Comentarios</h1>
+        <ul>
+            @foreach ($comentarios as $comentario)
+            <li class="flex items-center mb-2">
+              <a  class="text-sm font-semibold" href="{{ route('dash', ['user' => $comentario->user]) }}">
+              {{ $comentario->user->username }}
+            </a>
+
+
+               
+
+
+                <img src="https://static.vecteezy.com/ti/vetor-gratis/p1/9734564-default-avatar-profile-icon-of-social-media-user-vetor.jpg" class="w-8 h-8 rounded-full mr-2" alt="Imagen de perfil">
+                <div>
+                    
+                    <p class="text-gray-600">{{ $comentario->contenido }}</p>
+                </div>
+            </li>
+            @endforeach
+        </ul>
+    </div>
 </div>
 </div>
+
