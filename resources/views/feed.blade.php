@@ -29,7 +29,11 @@
                 </div>
                 
                 <div class="mt-4">
-                    
+                    @if ($user->lastPost)
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Facebook_Like_button.svg/1024px-Facebook_Like_button.svg.png" class="w-8 h-8 rounded-full mr-2" alt="Imagen de perfil">
+
+                    <p>{{ $user->lastPost->likes->count() }} Likes</p>
+                    @endif
                 </div>
             </div>
             @else
